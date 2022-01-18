@@ -9,15 +9,15 @@ type dataType = {
 const App = () => {
     const [name, setName] = useState('')
     const [data, setData] = useState<dataType>({} as dataType)
-    const inputRef = useRef<HTMLInputElement>(null)
+   /* const inputRef = useRef<HTMLInputElement>(null)*/
+const useDebugValue = (name ? 'hello' : 'bye')
 
-    const age = 22
   /*  const value = useMemo<dataType>(()=>({
         name, age
     }), [name])*/
-    const getName = useCallback(()=>{
+ /*   const getName = useCallback(()=>{
         console.log(name)
-    }, [name])
+    }, [name])*/
   /*  useEffect(() => {
         console.log('Name changed')
     }, [data.name])*/
@@ -39,7 +39,7 @@ const App = () => {
     }, [])*/
     return (
         <div className={'App'}>
-            <input ref={inputRef} value={name} placeholder='Enter name'/>
+            <input  value={name} placeholder='Enter name'/>
             {/* <input value={data.name} placeholder='Enter name'
                    onChange={e => setData({...data, name: e.currentTarget.value})}/>*/}
            {/* <div>
