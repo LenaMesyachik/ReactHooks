@@ -1,0 +1,55 @@
+
+.App {
+  padding: 100px;
+  display: flex;
+}
+
+.body {
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+    border: 4px solid black;
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between
+}
+
+.active-button {
+    width: 90px;
+    height: 40px;
+}
+
+.input {
+    width: 120px;
+    height: 60px;
+    margin: 20px
+}
+
+.disabled {
+    width: 90px;
+    height: 40px;
+    color: darkcyan;
+    background-color: crimson;
+}
+.counter {
+    border: 1px solid black;
+    width: 200px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+}
+
+.buttonBlock {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.inputBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
