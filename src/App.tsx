@@ -12,7 +12,8 @@ const App = () => {
                 <button
                     key = {todo.name}
                     style={{display:"flex", alignItems: 'center'}}
-                onClick={() => dispatch({type: 'COMPLETE', payload:todo.name})}>
+                onClick={() => todo.isCompleted ? dispatch({type: 'UNCOMPLETED', payload:todo.name}) :
+                    dispatch({type: 'COMPLETE', payload:todo.name}) }>
                     <div style={{backgroundColor: todo.isCompleted ? 'green' : 'grey',
                     width:15, height:15, marginRight: 5}}></div>
                     <div> {todo.name}</div>

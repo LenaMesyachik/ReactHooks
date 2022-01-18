@@ -13,7 +13,7 @@ import './App.css'
         },
         {
             name: 'shopping',
-            isCompleted: true
+            isCompleted: false
         },
     ]
    export const reducer = (state: initialStateType, action: any) => {
