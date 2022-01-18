@@ -1,4 +1,4 @@
-import React, {useEffect, useLayoutEffect, useState} from "react"
+import React, {useEffect, useLayoutEffect, useRef, useState} from "react"
 import './App.css'
 import {log} from "util";
 
@@ -6,39 +6,35 @@ type dataType = {
     name: string
 }
 const App = () => {
-    const [name, setName] = useState('')
-    const [data, setData] = useState<dataType>({} as dataType)
+  /*  const [name, setName] = useState('')
+    const [data, setData] = useState<dataType>({} as dataType)*/
+    const inputRef = useRef<HTMLInputElement>(null)
 
-
-    useEffect(() => {
+  /*  useEffect(() => {
         console.log('Name changed')
-    }, [data.name])
+    }, [data.name])*/
 
-useEffect(() => {
-    const interval = setInterval(() => {
-        console.log('500')}, 1000)
-    return () => {clearInterval(interval)}
-}, [])
+   /* useEffect(() => {
+        const interval = setInterval(() => {
+            console.log('500')
+        }, 1000)
+        return () => {
+            clearInterval(interval)
+        }
+    }, [])*/
 
-useLayoutEffect(() => {
-    console.log('LayoutEffect')
-}, [])
-    useEffect(() => {
-        console.log('UseEffect')
+    useLayoutEffect(() => {
+        console.log(inputRef.current.value)
     }, [])
-
-
-
-
-
-
-
+    useEffect(() => {
+        console.log(inputRef.current.value = 'vasya')
+    }, [])
     return (
         <div className={'App'}>
-            <input value={name} placeholder='Enter name' onChange={e => setName(e.currentTarget.value)}/>
-            <input value={data.name} placeholder='Enter name'
-                   onChange={e => setData({...data, name: e.currentTarget.value})}/>
-            <div>
+            <input ref={inputRef} value='max' placeholder='Enter name'/>
+            {/* <input value={data.name} placeholder='Enter name'
+                   onChange={e => setData({...data, name: e.currentTarget.value})}/>*/}
+           {/* <div>
                 <div>
                     <b>value:{name}</b>
                 </div>
@@ -47,7 +43,7 @@ useLayoutEffect(() => {
                 <div>
                     <b>value:{data.name}</b>
                 </div>
-            </div>
+            </div>*/}
         </div>
 
     )
