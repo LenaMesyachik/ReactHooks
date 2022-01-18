@@ -3,6 +3,7 @@ import './App.css'
 import {AuthContext} from "./AuthContext";
 import {useLocalStorage} from "./useLocalStorage";
 import {initialState} from "./reducer";
+import {UseInput} from "./useInput";
 
 
 const App:FC = () => {
@@ -28,6 +29,7 @@ const App:FC = () => {
             <button onClick={() => setTodos(todos.map((t:any, i:number) => {
                 if (i === 1) t.isCompleted = false
                 return t }))}>Change second todo</button>
+            <UseInput/>
         </div>
 )
 }
