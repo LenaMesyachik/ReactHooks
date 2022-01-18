@@ -1,14 +1,17 @@
-import React, {useReducer} from "react"
+import React, {FC, useContext, useReducer} from "react"
 import './App.css'
 import {initialState, reducer} from "./reducer";
+import {AuthContext} from "./AuthContext";
 
 
-const App = () => {
-    const [state, dispatch] = useReducer(reducer, initialState)
-    console.log(state)
+const App:FC = () => {
+    const {isAuth} = useContext(AuthContext)
+   /* const [state, dispatch] = useReducer(reducer, initialState)
+    console.log(state)*/
     return (
-        <div className={'App'}>
-            {state.map(todo =>
+        <div style={{marginTop:100}}>
+            {isAuth && 'aвторизированный пользователь'}
+           {/* {state.map(todo =>
                 <button
                     key = {todo.name}
                     style={{display:"flex", alignItems: 'center'}}
@@ -18,10 +21,9 @@ const App = () => {
                     width:15, height:15, marginRight: 5}}></div>
                     <div> {todo.name}</div>
                 </button>)}
-
+*/}
         </div>
-
-    )
+)
 }
 
 export default App
