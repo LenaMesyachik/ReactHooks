@@ -1,13 +1,16 @@
-import React, {FC, useContext, useReducer} from "react"
+import React, {FC, useContext} from "react"
 import './App.css'
-import {initialState, reducer} from "./reducer";
 import {AuthContext} from "./AuthContext";
+import {useLocalStorage} from "./useLocalStorage";
+import {initialState} from "./reducer";
 
 
 const App:FC = () => {
     const {isAuth} = useContext(AuthContext)
+    const [todos, setTodos] = useLocalStorage('todos', initialState)
    /* const [state, dispatch] = useReducer(reducer, initialState)
     console.log(state)*/
+    console.log(todos)
     return (
         <div style={{marginTop:100}}>
             {isAuth && 'aвторизированный пользователь'}
@@ -22,6 +25,9 @@ const App:FC = () => {
                     <div> {todo.name}</div>
                 </button>)}
 */}
+            <button onClick={() => setTodos(todos.map((t:any, i:number) => {
+                if (i === 1) t.isCompleted = false
+                return t }))}>Change second todo</button>
         </div>
 )
 }
