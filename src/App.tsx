@@ -1,57 +1,23 @@
-import React, {useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState} from "react"
+import React, {useReducer} from "react"
 import './App.css'
-import {log} from "util";
+import {initialState, reducer} from "./reducer";
 
-type dataType = {
-    name: string,
-    age : number
-}
+
 const App = () => {
-    const [name, setName] = useState('')
-    const [data, setData] = useState<dataType>({} as dataType)
-   /* const inputRef = useRef<HTMLInputElement>(null)*/
-const useDebugValue = (name ? 'hello' : 'bye')
-
-  /*  const value = useMemo<dataType>(()=>({
-        name, age
-    }), [name])*/
- /*   const getName = useCallback(()=>{
-        console.log(name)
-    }, [name])*/
-  /*  useEffect(() => {
-        console.log('Name changed')
-    }, [data.name])*/
-
-   /* useEffect(() => {
-        const interval = setInterval(() => {
-            console.log('500')
-        }, 1000)
-        return () => {
-            clearInterval(interval)
-        }
-    }, [])*/
-
-   /* useLayoutEffect(() => {
-        console.log(inputRef.current.value)
-    }, [])
-    useEffect(() => {
-        console.log(inputRef.current.value = 'vasya')
-    }, [])*/
+    const [state, dispatch] = useReducer(reducer, initialState)
+    console.log(state)
     return (
         <div className={'App'}>
-            <input  value={name} placeholder='Enter name'/>
-            {/* <input value={data.name} placeholder='Enter name'
-                   onChange={e => setData({...data, name: e.currentTarget.value})}/>*/}
-           {/* <div>
-                <div>
-                    <b>value:{name}</b>
-                </div>
-            </div>
-            <div>
-                <div>
-                    <b>value:{data.name}</b>
-                </div>
-            </div>*/}
+            {state.map(todo =>
+                <button
+                    key = {todo.name}
+                    style={{display:"flex", alignItems: 'center'}}
+                onClick={() => dispatch({type: 'COMPLETE', payload:todo.name})}>
+                    <div style={{backgroundColor: todo.isCompleted ? 'green' : 'grey',
+                    width:15, height:15, marginRight: 5}}></div>
+                    <div> {todo.name}</div>
+                </button>)}
+
         </div>
 
     )
