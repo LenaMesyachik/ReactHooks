@@ -1,4 +1,4 @@
-import React, {useEffect, useLayoutEffect, useMemo, useRef, useState} from "react"
+import React, {useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState} from "react"
 import './App.css'
 import {log} from "util";
 
@@ -12,9 +12,12 @@ const App = () => {
     const inputRef = useRef<HTMLInputElement>(null)
 
     const age = 22
-    const value = useMemo<dataType>(()=>({
+  /*  const value = useMemo<dataType>(()=>({
         name, age
-    }), [name])
+    }), [name])*/
+    const getName = useCallback(()=>{
+        console.log(name)
+    }, [name])
   /*  useEffect(() => {
         console.log('Name changed')
     }, [data.name])*/
