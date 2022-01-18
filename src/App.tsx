@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react"
+import React, {useEffect, useLayoutEffect, useState} from "react"
 import './App.css'
 import {log} from "util";
 
@@ -19,6 +19,18 @@ useEffect(() => {
         console.log('500')}, 1000)
     return () => {clearInterval(interval)}
 }, [])
+
+useLayoutEffect(() => {
+    console.log('LayoutEffect')
+}, [])
+    useEffect(() => {
+        console.log('UseEffect')
+    }, [])
+
+
+
+
+
 
 
     return (
